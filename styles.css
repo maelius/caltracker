@@ -1,0 +1,103 @@
+/* ==================== Farb- und Layout-Basis ==================== */
+:root {
+  --bg: #0f1220;
+  --panel: #171a2b;
+  --text: #e6e6f0;
+  --muted: #a7a7bf;
+  --accent: #7c5cff;
+  --accent-2: #22d3ee;
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 10% 10%, #1b1e35, var(--bg));
+}
+
+/* ==================== Container + Layout ==================== */
+.container { width: min(1100px, 92%); margin-inline: auto; }
+.row { display: flex; gap: 14px; align-items: center; }
+.footer { margin: 60px 0 40px; text-align: center; color: var(--muted); }
+
+/* ==================== Header & Navigation ==================== */
+.site-header {
+  position: sticky; top: 0; backdrop-filter: blur(8px);
+  background: #0f1220cc; border-bottom: 1px solid #252847; z-index: 10;
+}
+.header-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+.brand { font-weight: 800; letter-spacing: .3px; text-decoration: none; color: white; font-size: 20px; }
+.nav a { color: var(--muted); text-decoration: none; margin-left: 18px; padding: 8px 12px; border-radius: 10px; }
+.nav a:hover { background: #1d2036; color: var(--text); }
+
+/* ==================== Cards & Tabellen ==================== */
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.card { background: var(--panel); border: 1px solid #22254a; border-radius: var(--radius); padding: 16px; box-shadow: 0 10px 25px rgba(0,0,0,.25); }
+.card h3 { margin: 0 0 8px; }
+.card p { color: var(--muted); }
+.card .meta { font-size: 14px; color: var(--muted); }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid #26294e; padding: 12px; text-align: left; vertical-align: top; }
+.table th { color: var(--muted); font-weight: 600; }
+
+/* ==================== Formulare & Inputs ==================== */
+.form { display: grid; gap: 12px; }
+.input, .select {
+  width: 100%; padding: 10px 12px; border-radius: 10px;
+  border: 1px solid #2a2d55; background: #11142a; color: var(--text);
+}
+.input:focus { outline: 2px solid #3a3fb8; }
+textarea.input { resize: none; }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+
+/* ==================== Buttons & Badges ==================== */
+.button { background: var(--accent); border: none; color: white; padding: 10px 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.button.secondary { background: #2a2d55; }
+.button.sm { padding: 6px 10px; font-weight: 600; border-radius: 8px; }
+.info { color: var(--muted); font-size: 14px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #20234a; color: var(--muted); font-size: 12px; }
+
+/* ==================== Modal ==================== */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.55);
+  display: none; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-visible { display: flex; }
+.modal {
+  width: min(560px, 92%); background: var(--panel); border: 1px solid #26294e;
+  border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0,0,0,.45); padding: 16px;
+}
+.modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.modal-title { font-size: 18px; font-weight: 700; }
+
+/* ==================== Dropzone ==================== */
+.dropzone {
+  border: 2px dashed #8bb1ff; border-radius: 12px; padding: 20px;
+  background: #f5f8ff0d; display: grid; place-items: center; gap: 10px; text-align: center;
+  transition: background .2s ease, border-color .2s ease;
+}
+.dropzone .cloud {
+  width: 46px; height: 46px; display: inline-block; background: #8bb1ff;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M19 18H7a4 4 0 1 1 1.2-7.8 5 5 0 0 1 9.7 1.8H19a3 3 0 0 1 0 6m-7-2h2v-3h2l-3-3-3 3h2z"/></svg>') center/contain no-repeat;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M19 18H7a4 4 0 1 1 1.2-7.8 5 5 0 0 1 9.7 1.8H19a3 3 0 0 1 0 6m-7-2h2v-3h2l-3-3-3 3h2z"/></svg>') center/contain no-repeat;
+}
+.dropzone .hint { font-size: 13px; color: var(--muted); }
+.dropzone.dragover { background: #e9f0ff1f; border-color: #6ea0ff; }
+
+/* ==================== Aktionen in Tabelle ==================== */
+.actions-cell { white-space: nowrap; text-align: right; }
+.iconbtn {
+  background: #2a2d55; border: 0; color: #e6e6f0; width: 36px; height: 36px; border-radius: 10px; cursor: pointer;
+}
+.iconbtn + .iconbtn { margin-left: 8px; }
+.iconbtn.danger { background: #3a2230; }
+.iconbtn:hover { filter: brightness(1.1); }
+
